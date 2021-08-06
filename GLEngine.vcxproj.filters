@@ -115,6 +115,12 @@
     <None Include="vert.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
+    <None Include="light.frag">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="light.vert">
+      <Filter>Source Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\OpenGL Engine\OpenGL portals\images\wall.jpg">

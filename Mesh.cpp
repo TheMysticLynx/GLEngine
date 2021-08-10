@@ -49,7 +49,7 @@ void Mesh::Draw(Program& program, Camera& camera)
 		textures[i].Bind(i);
 	}
 
-	camera.Prep();
+	camera.Prep(CameraPrepMode::YawPitch);
 	camera.Uniform(program, "view");
 
 	// Draw the actual mesh

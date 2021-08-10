@@ -14,6 +14,9 @@ public:
 	std::vector <GLuint> indices;
 	std::vector <Texture> textures;
 
+	glm::vec3 position;
+	glm::vec3 rotation;
+
 	VAO VAO;
 
 	Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures);

@@ -11,6 +11,7 @@
 #include <glm/ext/matrix_transform.hpp>
 #include "Mesh.h"
 #include <iostream>
+#include "GLTFImporter.h"
 
 int WIDTH = 800;
 int HEIGHT = 600;
@@ -32,7 +33,7 @@ Vertex vertices[] = {
 
     //Front Face
 
-    Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
+    Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1 ,1), glm::vec2(0.0f, 0.0f)},
     Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 1.0f)},
     Vertex{glm::vec3( 0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 1.0f)},
     Vertex{glm::vec3( 0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
@@ -130,6 +131,10 @@ int main(void)
 
     cam.position.y = 1;
 
+
+    GLTFImporter::GetData("C:\\Users\\Kaide\\Documents\\skybox\\", "untitled.gltf");
+
+
     while (!glfwWindowShouldClose(window))
     {
         float delta = glfwGetTime() - time;
@@ -166,13 +171,18 @@ int main(void)
 
         static float lightColor[3] = { .1, .1, .1 };
         ImGui::ColorPicker3("Light Color", lightColor);
-        printf("Light Color: %.2f %.2f %.2f \n", lightColor[0], lightColor[1], lightColor[2]);
         program.setF3("lightColor", lightColor[0], lightColor[1], lightColor[2]);
 
         static float lightPosArr[3] = {1, 1, 1};
         glm::vec3 lightPos(lightPosArr[0], lightPosArr[1], lightPosArr[2]);
         ImGui::DragFloat3("Light Position: ", lightPosArr);
         program.setF3("lightPos", lightPos.x, lightPos.y, lightPos.z);
+
+        static float specStrength = .5;
+        ImGui::SliderFloat("Specular Strength", &specStrength, 0, 1);
+        program.setF1("specStrength", specStrength);
+
+        program.setF3("viewPos", cam.position.x, cam.position.y, cam.position.z);
 
         program.setM4("proj", glm::perspective(glm::radians(90.0f), (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f));
         program.setM4("model", glm::translate(glm::mat4(1), glm::vec3(0, 0, -1)));

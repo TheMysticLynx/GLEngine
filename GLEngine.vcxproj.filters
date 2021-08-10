@@ -28,6 +28,9 @@
     <Filter Include="Source Files\shaders">
       <UniqueIdentifier>{3300f4c6-a21b-4799-97f4-fcc05dcdf3b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\JSON">
+      <UniqueIdentifier>{154fddc8-5460-4001-87ab-1dab2617a596}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -106,6 +109,12 @@
     </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTFImporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON.h">
+      <Filter>Header Files\JSON</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

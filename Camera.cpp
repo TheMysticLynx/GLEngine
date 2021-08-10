@@ -35,15 +35,29 @@ void Camera::LookAt(glm::vec3 pos, glm::vec3 target, glm::vec3 worldUp)
     matrix = rotation * translation;
 }
 
-void Camera::Prep()
+void Camera::Prep(CameraPrepMode mode)
 {
-    glm::vec3 direction;
-    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    direction.y = sin(glm::radians(pitch));
-    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    switch (mode)
+    {
+    case YawPitch:
+        glm::vec3 direction;
+        direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+        direction.y = sin(glm::radians(pitch));
+        direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 
-    lookVec = glm::normalize(direction);
-    LookAt(position, position - lookVec);
+        lookVec = glm::normalize(direction);
+        LookAt(position, position - lookVec);
+        break;
+    case XYZ:
+        break;
+    case XZY:
+        break;
+    case Quaternion:
+        break;
+    default:
+        break;
+    }
+
 }
 
 void Camera::Uniform(Program& program, const char* uniformName)

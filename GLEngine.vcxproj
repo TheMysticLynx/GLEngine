@@ -172,6 +172,8 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EBO.h" />
+    <ClInclude Include="GLTFImporter.h" />
+    <ClInclude Include="JSON.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Shader.h" />

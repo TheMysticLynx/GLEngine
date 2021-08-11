@@ -11,7 +11,7 @@ class Mesh
 {
 public:
 	std::vector <Vertex> vertices;
-	std::vector <GLuint> indices;
+	std::vector <unsigned int> indices;
 	std::vector <Texture> textures;
 
 	glm::vec3 position;
@@ -19,6 +19,6 @@ public:
 
 	VAO VAO;
 
-	Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures);
+	Mesh(std::vector <Vertex>& vertices, std::vector <unsigned int>& indices, std::vector <Texture>& textures);
 	void Draw(Program& program, Camera& camera);
 };

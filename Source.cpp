@@ -28,48 +28,47 @@ void keyboard_input(GLFWwindow* window, int key, int scancode, int action, int m
 
 Camera cam;
 
-Vertex vertices[] = {
-    //Position                            //Normal                       //Color                        //TexCoords
-
-    //Front Face
-
-    Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1 ,1), glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 1.0f)},
-    Vertex{glm::vec3( 0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 1.0f)},
-    Vertex{glm::vec3( 0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
-
-    Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
-    Vertex{glm::vec3( 0.0f, 0.8f,  0.0f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
-
-    Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
-    Vertex{glm::vec3( 0.5f, 0.0f, -0.5f), glm::vec3( 0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3( 0.0f, 0.8f,  0.0f), glm::vec3( 0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
-
-    Vertex{glm::vec3( 0.5f, 0.0f, -0.5f), glm::vec3( 0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3( 0.5f, 0.0f,  0.5f), glm::vec3( 0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
-    Vertex{glm::vec3( 0.0f, 0.8f,  0.0f), glm::vec3( 0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
-
-    Vertex{glm::vec3( 0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
-    Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3( 0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
-    Vertex{glm::vec3( 0.0f, 0.8f,  0.0f), glm::vec3( 0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
-
-    
-};
-
-unsigned int indices[] = {
-    0, 1, 2, // Bottom side
-    0, 2, 3, // Bottom side
-    4, 6, 5, // Left side
-    7, 9, 8, // Non-facing side
-    10, 12, 11, // Right side
-    13, 15, 14 // Facing side
-};
-
-
 
 int main(void)
 {
+    Vertex vertices[] = {
+        //Position                            //Normal                       //Color                        //TexCoords
+
+        //Front Face
+
+        Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(1,1 ,1), glm::vec2(0.0f, 0.0f)},
+        Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 1.0f)},
+        Vertex{glm::vec3(0.5f, 0.0f, -0.5f), glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 1.0f)},
+        Vertex{glm::vec3(0.5f, 0.0f,  0.5f), glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
+
+        Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
+        Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
+        Vertex{glm::vec3(0.0f, 0.8f,  0.0f), glm::vec3(-0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
+
+        Vertex{glm::vec3(-0.5f, 0.0f, -0.5f), glm::vec3(0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
+        Vertex{glm::vec3(0.5f, 0.0f, -0.5f), glm::vec3(0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
+        Vertex{glm::vec3(0.0f, 0.8f,  0.0f), glm::vec3(0.0f, 0.5f, -0.8f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
+
+        Vertex{glm::vec3(0.5f, 0.0f, -0.5f), glm::vec3(0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
+        Vertex{glm::vec3(0.5f, 0.0f,  0.5f), glm::vec3(0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
+        Vertex{glm::vec3(0.0f, 0.8f,  0.0f), glm::vec3(0.8f, 0.5f,  0.0f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
+
+        Vertex{glm::vec3(0.5f, 0.0f,  0.5f), glm::vec3(0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(1.0f, 0.0f)},
+        Vertex{glm::vec3(-0.5f, 0.0f,  0.5f), glm::vec3(0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(0.0f, 0.0f)},
+        Vertex{glm::vec3(0.0f, 0.8f,  0.0f), glm::vec3(0.0f, 0.5f,  0.8f), glm::vec3(1,1,1), glm::vec2(0.5f, 1.0f)},
+
+
+    };
+
+    unsigned int indices[] = {
+        0, 1, 2, // Bottom side
+        0, 2, 3, // Bottom side
+        4, 6, 5, // Left side
+        7, 9, 8, // Non-facing side
+        10, 12, 11, // Right side
+        13, 15, 14 // Facing side
+    };
+
 #pragma region Init
     GLFWwindow* window;
 
